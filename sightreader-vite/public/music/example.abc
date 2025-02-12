@@ -1,0 +1,11 @@
+function loadMusicFile(filename) {
+  fetch(`/music/${filename}`)
+    .then(response => response.text())
+    .then(data => {
+      // Process the ABC file data
+      console.log(data);
+    })
+    .catch(error => {
+      console.error('Error loading music file:', error);
+    });
+}
