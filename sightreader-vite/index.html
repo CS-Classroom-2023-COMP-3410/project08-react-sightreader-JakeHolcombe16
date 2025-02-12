@@ -22,12 +22,12 @@
             <div class="span12">
                 <label for="devices">Microphone:</label>
                 <select id="devices"></select>
-                <label for="profiles">Profile:</label>
+                <!-- <label for="profiles">Profile:</label>
                 <select id="profiles">
                     {% for profile_value, profile_name in profiles %}
                         <option value="{{profile_value}}">{{profile_name}}</option>
                     {% endfor %}
-                </select>
+                </select> -->
                 <input type="text" id="newProfile" style="display:none;" placeholder="Enter name and press enter" />
                 <label for="file">File:</label>
                 <select id="file">
@@ -96,7 +96,7 @@
         </div>
     </div>
 
-    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#message-model">Open Modal</button>
+    <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#message-model">Open Modal</button> -->
     <div class="modal fade" id="message-model" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -113,6 +113,35 @@
     <script src="/js/ext/bootstrap.min.js" type="text/javascript"></script>
 
     <script src="/js/bundle.js?{{uuid}}" type="text/javascript"></script>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('music/beginner.pls')
+                .then(response => response.text())
+                .then(data => {
+                    const files = data.split('\n').filter(file => file.trim() !== '');
+                    const fileSelect = document.getElementById('file');
+                    files.forEach(file => {
+                        const trimmedFile = file.trim();
+                        const option = document.createElement('option');
+                        option.value = trimmedFile;
+                        option.textContent = trimmedFile;
+                        fileSelect.appendChild(option);
+                    });
+                });
+                document.getElementById('file').addEventListener('change', function() {
+                    // const file = this.value;
+                    // if (file === '') {
+                    //     document.getElementById('abc-textarea').value = '';
+                    //     return;
+                    // }
+                    // fetch(`music/${file}`)
+                    //     .then(response => response.text())
+                    //     .then(data => {
+                    //         document.getElementById('abc-textarea').value = data;
+                    //     });
+                });
+        });
+    </script>
   </body>
 </html>
