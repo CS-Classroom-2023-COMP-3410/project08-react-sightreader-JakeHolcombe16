@@ -5,11 +5,11 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 5173,
-    // You can change this if needed
   },
   resolve: {
     alias: {
-      'abcjs': 'abcjs/dist/abcjs-basic.min.js'
+      // REMOVE this alias
+      // 'abcjs': 'node_modules/abcjs/dist/abcjs-basic.min.js'
     }
   },
   build: {

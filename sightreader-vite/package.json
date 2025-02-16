@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "abcjs": "^6.4.4",
     "pitchfinder": "^2.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
